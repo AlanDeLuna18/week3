@@ -62,5 +62,11 @@ int main(int argc, char** argv) {
   }
   printf("\n");
 
+  //char long_str[] = "José Ülo 成龙";
+  char* missingLetter;
+  missingLetter = "é";  
+  printf("Finding é using utf8_find: %d\n", utf8_find(long_str, missingLetter));
+  printf("Reversing the long string: %s\n", utf8_reverse(long_str)); 
+
   return 0;
 }

@@ -72,13 +72,40 @@ char* utf8_substring(char* utf8str, unsigned int start, unsigned int end) {
 
 // Find the index (in terms of utf8 characters) where utf8_str_to_find appears
 // in utf8str_to_search, or -1 if it does not appear
-int utf8_find(char* utf8str_to_search, char* utf8str_to_find) {
+int utf8_find(char* utf8str_to_search, char* utf8str_to_find) 
+{
+  unsigned int stringLength = utf8_strlen(utf8str_to_search);
+
+  for(int a = 0; a < stringLength; a++)
+  {
+    if(utf8str_to_search[a] == *utf8str_to_find)
+    {
+      return a; 
+    }
+  } 
+
   return -1;
 }
 
 // Return a reversed version of the utf8str.
 // utf8_reverse("Ülo") -> "olÜ"
-char* utf8_reverse(char* utf8str) {
-  return NULL;
+char* utf8_reverse(char* utf8str) 
+{
+  unsigned int stringLength = utf8_strlen(utf8str); 
+  char* finalString = malloc(stringLength + 1);
+
+  for(int forward = 0, backward = stringLength - 1; forward < stringLength; forward++, backward--)
+  {
+    finalString[forward] = utf8str[backward];  
+  }
+
+  finalString[stringLength] = '\0';  
+  return finalString; 
+
+
+
+
+
+
 }
 
